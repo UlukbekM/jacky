@@ -7,8 +7,6 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-// import { toast } from "@/components/hooks/use-toast"
-import { useToast } from "@/hooks/use-toast"
 import {
     Form,
     FormControl,
@@ -24,126 +22,76 @@ const FormSchema = z.object({
     message: z
         .string()
         .min(10, {
-            message: "Bio must be at least 10 characters.",
+            message: "Message must be at least 10 characters.",
         })
-        .max(160, {
-            message: "Bio must not be longer than 30 characters.",
+        .max(1500, {
+            message: "Message must not be longer than 1500 characters.",
         }),
     name: z.string().min(2, {
         message: "Name must be at least 2 characters.",
     }),
-    email: z.string().min(2, {
-        message: "Email must be at least 2 characters.",
-    }),
-    jackyEmail: z.string().min(2, {
-        message: "Email must be at least 2 characters.",
-    }),
 })
-
+// https://www.downgraf.com/storage/2019/02/Contact-Us-Page-Designs-014.jpg
 export default function ContactForm() {
-    const { toast } = useToast()
-    const [name,setName] = useState<string>("")
-    const [email,setEmail] = useState<string>("")
-    const [message,setMessage] = useState<string>("")
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
             name: "",
-            email: "",
             message: "",
-            jackyEmail: "jackychen@email.com",
         },
     })
 
     function onSubmit(data: z.infer<typeof FormSchema>) {
-        const mailtoLink = `mailto:${data.jackyEmail}?subject=Message from ${data.name} from your portfolio &body=${encodeURIComponent(data.message)}`;
+        console.log('yeo')
+        const mailtoLink = `mailto:jackychenemail@gmail.com?subject=Message from ${data.name} from your portfolio &body=${encodeURIComponent(data.message)}`;
         window.location.href = mailtoLink;
     }
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex space-x-6">
-                <div className="space-y-6 basis-2/6">
-                    <FormField
-                    control={form.control}
-                    name="jackyEmail"
-                    render={({ field }) => (
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex space-y-6 md:space-y-0 md:space-x-6 flex-col md:flex-row my-4">
+                <div className="space-y-6 md:basis-2/6">
+                    {/* <FormField control={form.control} name="jackyEmail" render={({ field }) => (
                         <FormItem>
                         <FormLabel className="font-semibold">My Email</FormLabel>
                         <FormControl>
-                            <Input
-                            type="text"
-                            placeholder="jackychen@email.com"
-                            className="py-2"
-                            disabled
-                            {...field}
-                            />
+                            <Input type="text" placeholder="jackychen@email.com" className="py-2 border-muted-foreground dark:border-muted" disabled {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
-                    )}
-                    />
+                    )}/> */}
+                    <div>
+                        <Label className="font-semibold">My Email</Label>
+                        <p className="my-2 p-2 border border-muted-foreground dark:border-muted rounded-md">jackychenemail@gmail.com</p>
+                        {/* <Input placeholder="jackychenemail@gmail.com" type="email" className="my-2 border-muted-foreground dark:border-muted" readOnly/> */}
+                    </div>
 
-                    <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
+                    <FormField control={form.control} name="name" render={({ field }) => (
                         <FormItem>
-                        <FormLabel className="font-semibold">Your Name</FormLabel>
+                        <FormLabel className={`font-semibold ${form.formState.errors.name && "text-red-500" }`}>
+                            Your Name
+                        </FormLabel>
                         <FormControl>
-                            <Input
-                            type="text"
-                            placeholder="Name"
-                            className="py-2"
-                            {...field}
-                            />
+                            <Input type="text" placeholder="Name" className="py-2 border-muted-foreground dark:border-muted" {...field} />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className={`${form.formState.errors.name && "text-red-500" }`}/>
                         </FormItem>
-                    )}
-                    />
-
-                    {/* <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Your Email</FormLabel>
-                        <FormControl>
-                            <Input
-                            type="email"
-                            placeholder="Email"
-                            className="py-2"
-                            {...field}
-                            />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                    /> */}
+                    )}/>
                 </div>
 
-                <div className="grid w-full gap-2 basis-4/6">
-                    <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
+                <div className="grid w-full gap-2 md:basis-4/6">
+                    <FormField control={form.control} name="message" render={({ field }) => (
                         <FormItem>
-                        <FormLabel className="font-semibold">Your Message</FormLabel>
+                        <FormLabel className={`font-semibold ${form.formState.errors.message && "text-red-500" }`}>Your Message</FormLabel>
                         <FormControl>
-                            <Textarea
-                            placeholder="Type your message here."
-                            className="min-h-60"
-                            {...field}
-                            />
+                            <Textarea placeholder="Type your message here." className="min-h-60 border-muted-foreground dark:border-muted" {...field} />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className={`${form.formState.errors.message && "text-red-500" }`}/>
                         </FormItem>
-                    )}
-                    />
+                    )}/>
 
-                    <Button type="submit">Send message</Button>
+                    <Button type="submit" className="my-2">Send message</Button>
                 </div>
             </form>
         </Form>
