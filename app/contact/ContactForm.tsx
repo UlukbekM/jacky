@@ -52,19 +52,9 @@ export default function ContactForm() {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex space-y-6 md:space-y-0 md:space-x-6 flex-col md:flex-row my-4">
                 <div className="space-y-6 md:basis-2/6">
-                    {/* <FormField control={form.control} name="jackyEmail" render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className="font-semibold">My Email</FormLabel>
-                        <FormControl>
-                            <Input type="text" placeholder="jackychen@email.com" className="py-2 border-muted-foreground dark:border-muted" disabled {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}/> */}
                     <div>
                         <Label className="font-semibold">My Email</Label>
-                        <p className="my-2 p-2 border border-muted-foreground dark:border-muted rounded-md">jackychenemail@gmail.com</p>
-                        {/* <Input placeholder="jackychenemail@gmail.com" type="email" className="my-2 border-muted-foreground dark:border-muted" readOnly/> */}
+                        <Input defaultValue="jackychenemail@gmail.com" readOnly className="my-2 border-muted-foreground dark:border-muted"/>
                     </div>
 
                     <FormField control={form.control} name="name" render={({ field }) => (
