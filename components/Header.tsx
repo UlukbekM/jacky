@@ -11,7 +11,7 @@ export default function Header() {
     let router = usePathname()
 
     return (
-        <header className='flex items-center justify-between py-10 w-full px-4 md:px-0'>
+        <header className='flex items-center justify-between py-8 w-full px-4 md:px-0 fixed top-0 z-50 left-0 right-0 bg-inherit max-w-3xl mx-auto xl:max-w-5xl xl:px-0'>
             <Link href={"/"} className='text-2xl font-semibold'>
                 Jacky Chen
             </Link>
