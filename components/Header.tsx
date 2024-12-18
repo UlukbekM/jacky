@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { ModeToggle } from './ModeToggle';
 import { usePathname } from "next/navigation"
 import MobileHeader from './MobileHeader';
+import { Button, buttonVariants } from "@/components/ui/button"
+
 
 export default function Header() {
     let router = usePathname()
@@ -40,6 +42,10 @@ export default function Header() {
                         ${router === "/third" ? 'w-full' : 'w-0'}
                         `}>&nbsp;</span>
                     </Link> */}
+                    {/* <Button asChild variant={"ghost"} className='font-semibold'>
+                        <Link href="/contact">Login</Link>
+                    </Button> */}
+
                     <Link href={"/contact"} className='m-1 p-2 relative group'>
                         Contact
                         <span className={`h-[2px] inline-block bg-primary absolute left-0 -bottom-0.5 rounded-xl
