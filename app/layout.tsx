@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/Header";
-import { Toaster } from "@/components/ui/toaster"
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,17 +28,31 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className="max-w-3xl mx-auto xl:max-w-5xl xl:px-0">
+            <body className="relative">
+                <svg className="pointer-events-none fixed inset-0 z-50 opacity-70 mix-blend-soft-light"
+                xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+                    <filter id="grainy-noise">
+                        <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency="0.8"
+                        numOctaves="4"
+                        stitchTiles="stitch"
+                        />
+                    </filter>
+                    <rect width="100%" height="100%" filter="url(#grainy-noise)" />
+                </svg>
+
                 <ThemeProvider
                 attribute="class"
                 defaultTheme="dark"
                 enableSystem
-                disableTransitionOnChange>
-                    <Header/>
-                    <div className="mt-28">
-                        {children}
-                    </div>
-                    <Toaster/>
+                disableTransitionOnChange
+                >
+                <Header />
+                <div className="mt-28 max-w-3xl mx-auto xl:max-w-5xl xl:px-0">
+                    {children}
+                </div>
+                <Footer />
                 </ThemeProvider>
             </body>
         </html>
