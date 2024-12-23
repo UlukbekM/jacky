@@ -22,15 +22,11 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // useEffect(() => {
-    //     console.log(scrollPosition)
-    //   }, [scrollPosition]);
 
     return (
-        // <header className='z-10 flex items-center justify-between py-8 w-full px-4 md:px-0 fixed top-0 left-0 right-0 bg-inherit max-w-3xl mx-auto xl:max-w-5xl xl:px-0 rounded-2xl  bg-gray-800/9 '>
         <header className={`z-10 flex items-center justify-between md:mt-4  py-4 px-4 md:px-0 fixed top-0 left-0 right-0 max-w-4xl mx-auto xl:max-w-6xl xl:px-0 
-        rounded-2xl bg-background shadow-surface-glass backdrop-blur border
-        ${scrollPosition === 0 ? 'border-transparent' : "border-inherit bg-background/70"}`}>
+        md:rounded-2xl bg-background shadow-surface-glass backdrop-blur-sm border
+        ${scrollPosition === 0 ? 'border-transparent' : "border-muted-foreground dark:border-inherit bg-background/70"}`}>
             <Link href={"/"} className='text-2xl font-semibold px-4'>
                 Jacky Chen
             </Link>
