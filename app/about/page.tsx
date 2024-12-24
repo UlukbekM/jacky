@@ -1,6 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator"
-import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Mail, Twitter, File } from "lucide-react";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+import EmailButton from "./EmailButton";
+import ResumeButton from "./ResumeButton";
+
+
 
 // https://www.thvu.dev/about
 // https://www.devportfolios.dev/
@@ -19,12 +29,58 @@ export default function About() {
                         <div className="text-3xl font-bold text-center">
                             Jacky Chen
                         </div>
-                        <div className="text-2xl text-muted-foreground">where broski works</div>
+                        <div className="text-2xl text-muted-foreground">IT Support Technician</div>
                         <div className="flex space-x-4 justify-between">
-                            <Mail className="hover:text-primary hover:cursor-pointer md:w-6 md:h-6"/>
-                            <Linkedin className="hover:text-primary hover:cursor-pointer md:w-6 md:h-6"/>
-                            <Twitter className="hover:text-primary hover:cursor-pointer md:w-6 md:h-6"/>
-                            <Instagram className="hover:text-primary hover:cursor-pointer md:w-6 md:h-6"/>
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <EmailButton/>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>jackychen60@gmail.com</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <ResumeButton/>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>Resume</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <Linkedin className="hover:text-primary hover:cursor-pointer md:w-6 md:h-6"/>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>LinkedIn</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <Twitter className="hover:text-primary hover:cursor-pointer md:w-6 md:h-6"/>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>Twitter</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <Instagram className="hover:text-primary hover:cursor-pointer md:w-6 md:h-6"/>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>Instagram</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
                         </div>
                     </div>
                 </div>

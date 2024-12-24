@@ -34,10 +34,14 @@ export default function Header() {
                 <nav className='items-center space-x-4 flex font-semibold'>
                     <Link href={"/about"} className='m-1 p-2 relative group'>
                         About
-                        <span className={`h-[2px] inline-block bg-primary absolute left-0 -bottom-0.5 rounded-xl
+                        {/* <span className={`h-[2px] inline-block bg-primary absolute left-0 -bottom-0.5 rounded-xl
                         group-hover:w-full transition-[width] ease duration-300
                         ${router === "/about" ? 'w-full' : 'w-0'}
-                        `}>&nbsp;</span>
+                        `}>&nbsp;</span> */}
+                        <span className={`h-[2px] inline-block bg-primary absolute left-1/2 -translate-x-1/2 -bottom-0.5 rounded-xl
+                            transition-[width] duration-300 ease-in-out group-hover:w-full ${
+                            router === "/about" ? "w-full" : "w-0"
+                        }`}/>
                     </Link>
                     <Link href={"/projects"} className='m-1 p-2 relative group'>
                         Projects
@@ -63,10 +67,14 @@ export default function Header() {
 
                     <Link href={"/contact"} className='m-1 p-2 relative group'>
                         Contact
-                        <span className={`h-[2px] inline-block bg-primary absolute left-0 -bottom-0.5 rounded-xl
+                        {/* <span className={`h-[2px] inline-block bg-primary absolute left-0 -bottom-0.5 rounded-xl
                         group-hover:w-full transition-[width] ease duration-300
                         ${router === "/contact" ? 'w-full' : 'w-0'}
-                        `}>&nbsp;</span>
+                        `}>&nbsp;</span> */}
+                        <span className={`h-[2px] inline-block bg-primary absolute left-1/2 -translate-x-1/2 -bottom-0.5 rounded-xl
+                            transition-[width] duration-300 ease-in-out group-hover:w-full ${
+                            router === "/contact" ? "w-full" : "w-0"
+                        }`}/>
                     </Link>
                     <ModeToggle/>
                 </nav>

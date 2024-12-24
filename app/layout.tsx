@@ -32,7 +32,7 @@ export default function RootLayout({
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body className="relative">
-                <svg className="pointer-events-none fixed inset-0 z-40 opacity-70 mix-blend-soft-light"
+                {/* <svg className="pointer-events-none fixed inset-0 z-40 opacity-70 mix-blend-soft-light"
                 xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
                     <filter id="grainy-noise">
                         <feTurbulence
@@ -43,7 +43,7 @@ export default function RootLayout({
                         />
                     </filter>
                     <rect width="100%" height="100%" filter="url(#grainy-noise)" />
-                </svg>
+                </svg> */}
 
                 <ThemeProvider
                 attribute="class"

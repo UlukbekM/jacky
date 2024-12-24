@@ -43,8 +43,7 @@ export default function ContactForm() {
     })
 
     function onSubmit(data: z.infer<typeof FormSchema>) {
-        console.log('yeo')
-        const mailtoLink = `mailto:jackychenemail@gmail.com?subject=Message from ${data.name} from your portfolio &body=${encodeURIComponent(data.message)}`;
+        const mailtoLink = `mailto:jackychen60@gmail.com?subject=Message from ${data.name} from your portfolio &body=${encodeURIComponent(data.message)}`;
         window.location.href = mailtoLink;
     }
 
@@ -54,7 +53,7 @@ export default function ContactForm() {
                 <div className="space-y-6 md:basis-2/6">
                     <div>
                         <Label className="font-semibold">My Email</Label>
-                        <Input defaultValue="jackychenemail@gmail.com" readOnly className="my-2 border-muted-foreground dark:border-muted"/>
+                        <Input defaultValue="jackychen60@gmail.com" readOnly className="my-2 border-muted-foreground dark:border-muted"/>
                     </div>
 
                     <FormField control={form.control} name="name" render={({ field }) => (
